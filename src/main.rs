@@ -132,7 +132,11 @@ fn main() -> anyhow::Result<()> {
     loop {
         let guard = act.last_activity.lock().unwrap();
         let last = *guard;
+<<<<<<< HEAD
         let (unneeded, result) = act
+=======
+        let (_unused, result) = act
+>>>>>>> b7b17e3 (Fix non-binding let breaking build)
             .condvar
             .wait_timeout_while(guard, Duration::from_secs(args.timeout.into()), |instant| {
                 *instant == last
